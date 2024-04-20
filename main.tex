@@ -1,0 +1,115 @@
+\documentclass[utf-8, 10pt]{article}
+
+\usepackage{ctex}
+\input{LaTeX_tem/geometry_settings.tex}
+\input{LaTeX_tem/titlesec_settings.tex}
+\input{LaTeX_tem/mdframed_settings.tex}
+\input{LaTeX_tem/listings_settings.tex}
+\usepackage{caption, subcaption}
+\usepackage{longtable, diagbox, booktabs}
+\usepackage{float, graphicx}
+\usepackage{amsthm, amssymb, amsmath, mathrsfs, mhchem, siunitx, pgfplots}
+\usepackage{tikz, circuitikz, tikz-cd, tikz-3dplot}
+\usetikzlibrary{decorations.markings, angles, quotes}
+\usepackage{tasks, enumitem}
+\usepackage{hyperref}
+\hypersetup{hidelinks,
+    colorlinks = true,
+    allcolors = black,
+    pdfstartview = Fit,
+    breaklinks = true}
+\usepackage[toc]{multitoc}
+\usepackage{abstract}
+\usepackage{extpfeil}
+\usepackage{xcolor}
+
+\everymath{\displaystyle}
+
+\begin{document}
+\input{LaTeX_tem/theoremstyles.tex}
+
+\title{\textbf{矩阵代数}
+
+Matrix Algebra}
+\author{钱锋\thanks{电子邮件: strik0r.qf@gmail.com
+\newline \indent 西北工业大学软件学院, School of Software, Northwestern Polytechnical University, 西安 710072
+\newline \indent 保密级别: public}}
+\setlength{\columnsep}{2em}
+\twocolumn[
+    \maketitle
+    {\small \tableofcontents}
+    \newpage
+    \begin{abstract}
+        现在还没有摘要
+        \begin{keywords}
+            
+        \end{keywords}
+    \end{abstract}
+    \vspace*{1em}
+]
+\saythanks
+
+% 正文从这里开始
+\section{矩阵运算}
+
+\textbf{矩阵} (matrix) 是\textbf{二维数组} (2 dimentional array), 
+它由 $m \times n$ 个\textbf{元素} (element) 排列成 $m$ \textbf{行} (row), 
+$n$ \textbf{列} (coloum) 组成.
+矩阵通常用粗体的拉丁字母表示.
+矩阵的行数与列数构成的二维向量 $[m, n]$ 
+称为矩阵 $\boldsymbol{A}$ 的\textbf{形状} (shape). 记作 $\boldsymbol{A}.\mathrm{shape}$,
+形状为 $[m, n]$, 且所有元素取自数域 $\mathbb{K}$ 的矩阵称为
+数域 $\mathbb{K}$ 上的 $m \times n$ 矩阵, 这样的矩阵全体组成的集合
+记作 $\mathbb{K}^{m \times n}$, 称为 $m \times n$ \textbf{矩阵空间}
+(matrix space).
+
+设矩阵 $\boldsymbol{A} \in \mathbb{K}^{m \times n}$, 则 $\boldsymbol{A}$ 的第 $i$
+行和第 $j$ 列交叉位置处的元素用 $a_{ij}$ 或 $\boldsymbol{A}[i,j]$ 来表示. 即
+\[ \boldsymbol{A} = \begin{bmatrix}
+    a_{00} & a_{01} & \cdots & a_{0, n-1} \\
+    a_{10} & a_{11} & \cdots & a_{1, n-1} \\ 
+    \vdots & \vdots & \ddots & \vdots \\ 
+    a_{m-1, 0} & a_{m-1, 0} & \cdots & a_{m-1,n-1}
+\end{bmatrix}. \]
+为了方便将矩阵方程转变为高级程序设计语言代码, 我们在设计数学符号时
+使用了面向对象风格\footnote{
+    一般地, 与具体的对象有关的属性和函数采用面向对象风格的记号,
+    与具体的对象无关的属性和函数 (即静态的属性和函数) 和多元函数采用传统的函数记号.
+}, 并规定矩阵中元素的行索引和列索引均从 $0$ 开始, 而不是从
+$1$ 开始.
+
+矩阵 $\boldsymbol{A}$ 的各列是 $\mathbb{R}^m$ 中的向量,
+我们用黑体字母 $\boldsymbol{a}_0, 
+\boldsymbol{a}_1, \cdots, \boldsymbol{a}_{n-1}$
+来表示, 也可以采用高级程序设计语言中常见的记号,
+使用 $\boldsymbol{A}[:,0], \boldsymbol{A}[:,1], \cdots, \boldsymbol{A}[:,n-1]$
+来表示. 因此我们也可以写作
+\[ \boldsymbol{A} = \left[
+    \boldsymbol{a}_0,
+    \boldsymbol{a}_1, \cdots, \boldsymbol{a}_{n-1}
+\right]. \]
+其中, $\boldsymbol{A}[i,j] = \boldsymbol{A}[:,j][i]$, 它表示元素 $a_{ij}$ 是第 $j$ 个列向量 
+$\boldsymbol{a}_j$ 的第 $i$ 个元素.
+在后续的行文中, 除非形如 $a_{ij}$ 的表示法不便于表示 (例如 $i$ 或 $j$ 的表达式
+特别复杂), 或者需要将矩阵方程翻译为高级程序设计语言代码, 否则我们一般不采用
+符号 $\boldsymbol{A}[i,j]$.
+
+$m \times n$ 矩阵 $\boldsymbol{A}$ 的对角线元素
+
+\clearpage
+\section{矩阵的逆}
+\section{可逆矩阵的特征}
+\section{分块矩阵}
+\section{矩阵分解}
+
+
+
+\begin{thebibliography}{1}
+    \addcontentsline{toc}{section}{参考文献}
+    \bibitem{David}
+    [美] David C. Lay, [美] Steven R. Lay, [美] Judi J. McDonald.
+    线性代数及其应用: 原书第 6 版 = Linear Algebra and Its Application,
+    Sixth Edition [M]. 刘深泉等译. 北京: 机械工业出版社, 2023.
+\end{thebibliography}
+
+\end{document}
